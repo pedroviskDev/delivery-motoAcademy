@@ -1,0 +1,155 @@
+body{
+    margin: 0;
+    background-color:var(--cor-fundo); 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --fonte-principal: "Montserrat", sans-serif;
+    --fonte-secundaria: "League Spartan", sans-serif;
+    --cor-laranja: #FF914D;
+    --cor-escura: #31241E;
+    --cor-fundo: #F6F4F3;
+    --cor-hover: #86654B;
+    --cor-branco: #ffffff;
+    
+
+}
+
+
+.nav{
+    text-align: center;
+    margin-top: 1.5em;
+}
+
+.nav__link{
+    font-family: var(--fonte-principal);
+    font-size: 1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 0.3em;
+    color: var(--cor-escura);;
+}
+
+.nav__atual{
+    color: var(--cor-hover);
+    font-weight: bold;
+}
+
+hr{
+    width: 95%;
+    height: 0.4px;
+    background-color: var(--cor-escura);
+    
+}
+
+.conteudo {
+    margin: 10em 15% 0 15%;
+    text-align: center;
+    align-items: center ;
+}
+
+.conteudo__titulo {
+    font-family: var(--fonte-principal);
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+
+.titulo__destaque{
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-laranja);
+    font-size: 6em;
+    font-weight: bolder;
+    text-transform: capitalize;
+    margin-right: 0.1em;
+}
+
+.destaque__texto {
+    font-size: 1.1em;
+}
+
+.titulo__auxiliar {
+    text-align: start;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.imagem-principal {
+    width: 100%;
+    margin: 2em 0;
+}
+
+.conteudo__pedido {
+    margin: 2em 0;
+}
+
+.conteudo__pedido__texto {
+    font-family: var(--fonte-principal);
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 420;
+}
+
+.conteudo__botao {
+    padding: 1.5em;
+    background: rgb(255,145,77);
+    background: linear-gradient(90deg, rgba(255,145,77,1) 35%, rgba(248,191,40,1) 100%);
+    border-radius: 16px;
+}
+
+.conteudo__botao__link {
+    text-decoration: none;
+    color: var(--cor-branco);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: var(--fonte-principal);
+    
+}
+
+@media screen and (min-width: 720px) {
+    .nav{
+        text-align: end;
+        margin: 3em 5% 1em 0;
+    }
+
+    .nav__link{
+        padding: 0 1.5em;
+    }
+
+    .conteudo {
+        display: flex;
+        margin-top: 4em;
+        margin-bottom: 2em;
+        justify-content: space-between;
+        gap: 10%;
+    }
+    .imagem-principal {
+        width: 50%;
+        margin: 0;
+    }
+
+    .conteudo__botao{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .nav__atual{
+        color: black;
+        font-weight: 100;
+    }
+
+    .nav__link:hover{
+        color: var(--cor-hover);
+        font-weight: bolder;
+    }
+
+    .conteudo__botao:hover{
+        border: 1px solid black;
+    }
+
+}
