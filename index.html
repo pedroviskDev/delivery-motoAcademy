@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delivery</title>
-    <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css"> 
 </head>
 <body>
-    <nav class="nav">
-        <a href="#" class="nav__link nav__atual">home</a>
-        <a href="#" class="nav__link">sobre</a>
-        <a href="#" class="nav__link">pedido</a>
-        <a href="#" class="nav__link">cardapio</a>
-        <a href="#" class="nav__link">contato</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Delivery</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cardápio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contato</a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <hr>
-    <div class="conteudo">
-
+    <div class="conteudo container">
         <div class="conteudo__informacoes">
-
             <div class="conteudo__titulo">
                 <h1 class="titulo__destaque">Fast</h1> 
                 <h1 class="titulo__auxiliar"><span class="destaque__texto">Food</span><br>Delivery</h1>
@@ -30,12 +46,12 @@
             <div class="conteudo__botao">
                 <a href="#" class="conteudo__botao__link">Quero me cadastrar</a>
             </div>
-        
         </div>
-        <img src="/img/delivery.jpg" alt="" class="imagem-principal">
-           
-        
+        <img src="img/delivery.jpg" alt="Fast Food Delivery" class="imagem-principal">
     </div>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
