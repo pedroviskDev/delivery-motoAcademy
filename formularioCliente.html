@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente - Go Fast</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://hamburguerdesucesso.com.br/wp-content/uploads/2021/05/lanches-para-vender-combos.jpg'); /* Imagem de fundo da página */
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            color: white; 
+        }
+        .navbar {
+            background-color: #ff6f00;
+        }
+        .navbar a {
+            color: white;
+        }
+        .navbar-brand {
+            font-size: 1.8rem; 
+        }
+        .form-section {
+            background-color: rgba(255, 255, 255, 0.85); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 400px; 
+            margin: auto; 
+        }
+        .form-section h2 {
+            color: white; 
+            text-align: center; 
+            display: inline-block; 
+            padding: 5px; 
+        }
+        .form-group label {
+            color: black; 
+        }
+        .invalid-feedback {
+            display: none;
+        }
+        .form-control:invalid ~ .invalid-feedback {
+            display: block;
+        }
+        .form-control.is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        .disabled {
+            background-color: rgba(255, 255, 255, 0.7); 
+            pointer-events: none;
+        }
+        .btn-primary {
+            background-color: #ff6f00;
+            border-color: #ff6f00;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Go Fast</a> 
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Pedido</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="form-section">
+            <h2>Cadastre-se</h2>
+            <form id="cadastroForm" novalidate>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                    <div class="invalid-feedback">Campo obrigatório.</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="invalid-feedback">Campo obrigatório.</div>
+                </div>
+                <div class="form-group">
+                    <label for="contato">Contato</label>
+                    <input type="text" class="form-control" id="contato" name="contato" required>
+                    <div class="invalid-feedback">Campo obrigatório.</div>
+                </div>
+                <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" class="form-control" id="cep" name="cep" required>
+                    <div class="invalid-feedback">Campo obrigatório.</div>
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control disabled" id="endereco" name="endereco" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" class="form-control disabled" id="bairro" name="bairro" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control disabled" id="cidade" name="cidade" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="uf">UF</label>
+                    <input type="text" class="form-control disabled" id="uf" name="uf" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="text" class="form-control" id="numero" name="numero" required>
+                    <div class="invalid-feedback">Campo obrigatório.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#cadastroForm').on('submit', function(event) {
+                if (this.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    $(this).addClass('was-validated');
+                } else {
+                    event.preventDefault();
+                    
+                }
+            });
+
+            $('#email').on('blur', function() {
+                const email = $(this).val();
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com)$/;
+                if (!emailPattern.test(email)) {
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            });
+
+            $('#contato').on('blur', function() {
+                const contato = $(this).val();
+                if (contato.length !== 11 || !/^\d{11}$/.test(contato)) {
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            });
+
+            $('#cep').on('input', function() {
+                this.value = this.value.replace(/\D/g, '');
+            });
+
+            $('#cep').on('blur', function() {
+                const cep = $(this).val();
+                if (cep.length === 8 && /^[0-9]{8}$/.test(cep)) {
+                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.erro) {
+                                alert('CEP não encontrado!');
+                                $('#cep').addClass('is-invalid').next('.invalid-feedback').text('CEP inválido');
+                                $('#endereco, #bairro, #cidade, #uf').val('');
+                            } else {
+                                $('#endereco').val(data.logradouro);
+                                $('#bairro').val(data.bairro);
+                                $('#cidade').val(data.localidade);
+                                $('#uf').val(data.uf);
+                                $('#cep').removeClass('is-invalid');
+                            }
+                        });
+                } else {
+                    $('#cep').addClass('is-invalid').next('.invalid-feedback').text('CEP inválido');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
