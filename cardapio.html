@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #ff0000; /* Fundo vermelho */
+            background-color: #ff0000; 
             color: white;
             background-image: url('https://img.freepik.com/fotos-gratis/sanduiche-caseiro-com-espaco-de-copia_23-2148433238.jpg?w=1060&t=st=1722274634~exp=1722275234~hmac=ef74c7522241c7e1c6d5c6a1b80624d7e5cb7564081666720dc56a1df6988d7a');
-            background-size: cover; /* Preenche o fundo com a imagem */
+            background-size: cover; 
         }
         .navbar {
             background-color: #ff6f00;
         }
         .card {
             margin: 20px;
-            background-color: rgba(255, 255, 0, 0.8); /* Fundo amarelo mais escuro */
-            border-radius: 15px; /* Bordas arredondadas */
-            height: 100%; /* Ajuste a altura dos cards */
+            background-color: rgba(255, 255, 0, 0.8); 
+            border-radius: 15px; 
+            height: 100%; 
         }
         .card-body {
             display: flex;
@@ -34,16 +34,16 @@
             color: white;
         }
         .product-image {
-            max-width: 100%; /* Limita a largura da imagem ao tamanho do card */
-            height: 150px; /* Define a altura das imagens */
-            object-fit: cover; /* Ajusta a imagem para cobrir o card sem distorcer */
+            max-width: 100%; 
+            height: 150px; 
+            object-fit: cover; 
             border-radius: 10px;
         }
         #pedido {
-            color: black; /* Define a cor do texto da lista de pedidos como preto */
+            color: black; 
         }
         .col-md-4 {
-            margin-bottom: 20px; /* Adiciona espaçamento entre os cards */
+            margin-bottom: 20px; 
         }
     </style>
 </head>
@@ -188,10 +188,10 @@
         function finalizarPedido() {
             if (produtosSelecionados.length > 0) {
                 alert('Pedido finalizado com sucesso!');
-                // Aqui você pode adicionar a lógica para processar o pedido
-                produtosSelecionados = []; // Limpa a seleção após finalizar
+                
+                produtosSelecionados = []; 
                 totalPedido = 0; // Reseta o total
-                atualizarListaPedido(); // Atualiza a lista e o total
+                atualizarListaPedido(); 
             } else {
                 alert('Adicione produtos ao pedido antes de finalizar.');
             }
