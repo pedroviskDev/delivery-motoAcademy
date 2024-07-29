@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delivery</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Delivery</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pedido</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cardápio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <hr />
+    <div class="conteudo container">
+      <form class="validarForms" novalidate>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom01">Primeiro nome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom01"
+              placeholder="Nome"
+              value="Mark"
+              required
+            />
+            <div class="valid-feedback">Tudo certo!</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Sobrenome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom02"
+              placeholder="Sobrenome"
+              value="Otto"
+              required
+            />
+            <div class="valid-feedback">Tudo certo!</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom03">Cidade</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cidade"
+              placeholder="Cidade"
+              required
+            />
+            <div class="invalid-feedback">
+              Por favor, informe uma cidade válida.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom04">Estado</label>
+            <input
+              type="text"
+              class="form-control"
+              id="estado"
+              placeholder="Estado"
+              required
+            />
+            <div class="invalid-feedback">
+              Por favor, informe um estado válido.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom05">CEP</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cep"
+              placeholder="CEP"
+              required
+            />
+            <div class="invalid-feedback">
+              Por favor, informe um CEP válido.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="invalidCheck"
+              required
+            />
+            <label class="form-check-label" for="invalidCheck">
+              Concordo com os termos e condições
+            </label>
+            <div class="invalid-feedback">
+              Você deve concordar, antes de continuar.
+            </div>
+          </div>
+        </div>
+        <button class="" type="submit" onclick="validarCadastro()">
+          Enviar
+        </button>
+      </form>
+      <div
+        class="modal"
+        id="modalConfirmacao"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target=".bd-example-modal-sm"
+        >
+          Recadastrar
+        </button>
+        <div
+          class="modal fade bd-example-modal-sm"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="mySmallModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">...</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          "use strict";
+          window.addEventListener(
+            "load",
+            function () {
+              const forms = document.getElementsByClassName("validarForms");
+
+              const validarCampo = Array.prototype.filter.call(forms,function (form) {
+                  form.addEventListener( "submit",function (event) {
+                      if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                      form.classList.add("was-validated");
+                    },
+                    false
+                  );
+                }
+              );
+            },
+            false
+          );
+        });
+
+        const cepInput = document.getElementById("cep");
+        const cidadeInput = document.getElementById("cidade");
+        const estadoInput = document.getElementById("estado");
+        const nomeInput = document.getElementById("nome");
+        const sobrenome = document.getElementById("sobrenome");
+
+        cepInput.addEventListener("input", function () {
+          const cep = this.value.replace(/\D/g, "");
+          if (cep.length === 8) {
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+            fetch(url)
+              .then((response) => response.json())
+              .then((data) => {
+                if (!data.erro) {
+                  cidadeInput.value = data.localidade;
+                  estadoInput.value = data.uf;
+                  console.log(data.localidade);
+                } else {
+                  alert("CEP não encontrado.");
+                }
+              })
+              .catch((error) => {
+                console.error("Erro ao buscar CEP:", error);
+              });
+          }
+        });
+
+        function validarCadastro(data) {
+          if (data.localidade !== "Manaus") {
+            $("#modalConfirmacao").modal("show");
+          } else {
+            window.location.href = "./pagina-pedido.html";
+          }
+          return;
+        }
+      </script>
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+  </body>
+</html>
