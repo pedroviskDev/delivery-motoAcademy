@@ -175,7 +175,7 @@
         function atualizarListaPedido() {
             const pedidoList = document.getElementById('pedido');
             const totalElement = document.getElementById('total');
-            pedidoList.innerHTML = ''; // Limpa a lista antes de atualizar
+            pedidoList.innerHTML = ''; 
             produtosSelecionados.forEach(item => {
                 const listItem = document.createElement('li');
                 listItem.className = 'list-group-item';
@@ -190,7 +190,7 @@
                 alert('Pedido finalizado com sucesso!');
                 
                 produtosSelecionados = []; 
-                totalPedido = 0; // Reseta o total
+                totalPedido = 0; 
                 atualizarListaPedido(); 
             } else {
                 alert('Adicione produtos ao pedido antes de finalizar.');
