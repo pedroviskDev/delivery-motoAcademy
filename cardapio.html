@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Go Fast</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ff0000; /* Fundo vermelho */
+            color: white;
+            background-image: url('https://img.freepik.com/fotos-gratis/sanduiche-caseiro-com-espaco-de-copia_23-2148433238.jpg?w=1060&t=st=1722274634~exp=1722275234~hmac=ef74c7522241c7e1c6d5c6a1b80624d7e5cb7564081666720dc56a1df6988d7a');
+            background-size: cover; /* Preenche o fundo com a imagem */
+        }
+        .navbar {
+            background-color: #ff6f00;
+        }
+        .card {
+            margin: 20px;
+            background-color: rgba(255, 255, 0, 0.8); /* Fundo amarelo mais escuro */
+            border-radius: 15px; /* Bordas arredondadas */
+            height: 100%; /* Ajuste a altura dos cards */
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-title {
+            color: #ff6f00;
+        }
+        .btn-custom {
+            background-color: #ff6f00;
+            color: white;
+        }
+        .product-image {
+            max-width: 100%; /* Limita a largura da imagem ao tamanho do card */
+            height: 150px; /* Define a altura das imagens */
+            object-fit: cover; /* Ajusta a imagem para cobrir o card sem distorcer */
+            border-radius: 10px;
+        }
+        #pedido {
+            color: black; /* Define a cor do texto da lista de pedidos como preto */
+        }
+        .col-md-4 {
+            margin-bottom: 20px; /* Adiciona espaçamento entre os cards */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Go Fast</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Pedido</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Cardápio</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hambúrguer Clássico - R$ 36,00</h5>
+                        <p class="card-text">Delicioso hambúrguer com queijo e salada.</p>
+                        <img src="https://guiadacozinha.com.br/wp-content/uploads/2019/11/hamburguer-mexicano.jpg" alt="Hambúrguer Clássico" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Hambúrguer Clássico', 36.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Batata Frita - R$ 18,00</h5>
+                        <p class="card-text">Porção de batatas fritas crocantes.</p>
+                        <img src="https://www.tendaatacado.com.br/dicas/wp-content/webp-express/webp-images/uploads/2022/06/como-fazer-batata-frita-topo.jpg.webp" alt="Batata Frita" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Batata Frita', 18.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Refrigerante - R$ 9,00</h5>
+                        <p class="card-text">Refrigerante gelado da sua escolha.</p>
+                        <img src="https://doutorjairo.com.br/media/_versions/istock-refrigerante_widelg.jpg" alt="Refrigerante" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Refrigerante', 9.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Milkshake - R$ 12,00</h5>
+                        <p class="card-text">Delicioso milkshake de chocolate ou baunilha.</p>
+                        <img src="https://www.academiaassai.com.br/sites/default/files/styles/noticia_1020x640/public/shake_capa.jpg?itok=6oFdpmdn" alt="Milkshake" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Milkshake', 12.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Suco Natural - R$ 8,00</h5>
+                        <p class="card-text">Suco natural de laranja ou limão.</p>
+                        <img src="https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2024/01/18/1072779323-istocksucoq9idvnk.jpg" alt="Suco Natural" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Suco Natural', 8.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Pastel - R$ 10,00</h5>
+                        <p class="card-text">Pastel frito com recheio de carne ou queijo.</p>
+                        <img src="https://cdn.prod.website-files.com/5edf7b44b7a4f6000913a233/65e9cbbeabf94bd313a10882_sabores-de-pastel_.webp" alt="Pastel" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Pastel', 10.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Salada de Frutas - R$ 15,00</h5>
+                        <p class="card-text">Salada de frutas frescas e saudáveis.</p>
+                        <img src="https://oquetempracomer.com.br/wp-content/uploads/elementor/thumbs/filtrado-1-p73wc32f796aqh8dfsxjsxs37qt18k0ahzl9kzwbdo.png" alt="Salada de Frutas" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Salada de Frutas', 15.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bolo de Chocolate - R$ 14,00</h5>
+                        <p class="card-text">Bolo de chocolate fofinho e delicioso.</p>
+                        <img src="https://s2-receitas.glbimg.com/wJmq1MqeOZZ-VSLlDxRLdL2zj60=/0x0:1280x800/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/1/N/aQD0fhQs2qW7qlFw0bTA/bolo-de-chocolate-facil.jpg" alt="Bolo de Chocolate" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Bolo de Chocolate', 14.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Coxinha de Frango com Catupiry - R$ 7,00</h5>
+                        <p class="card-text">Coxinha de frango cremosa com catupiry.</p>
+                        <img src="https://receitastopsefaceis.com.br/wp-content/uploads/2023/04/Coxinha-de-frango-com-catupiry-cremosa.jpeg" alt="Coxinha de Frango com Catupiry" class="product-image">
+                        <button class="btn btn-custom" onclick="adicionarProduto('Coxinha de Frango com Catupiry', 7.00)">Adicionar ao Pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-center mt-5">Seu Pedido</h3>
+        <ul id="pedido" class="list-group"></ul>
+        <h4 class="text-center mt-3" id="total">Total: R$ 0,00</h4>
+        <button class="btn btn-primary mt-3" onclick="finalizarPedido()">Finalizar Pedido</button>
+    </div>
+
+    <script>
+        let produtosSelecionados = [];
+        let totalPedido = 0;
+
+        function adicionarProduto(produto, preco) {
+            produtosSelecionados.push({ nome: produto, preco: preco });
+            totalPedido += preco;
+            atualizarListaPedido();
+        }
+
+        function atualizarListaPedido() {
+            const pedidoList = document.getElementById('pedido');
+            const totalElement = document.getElementById('total');
+            pedidoList.innerHTML = ''; // Limpa a lista antes de atualizar
+            produtosSelecionados.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+                pedidoList.appendChild(listItem);
+            });
+            totalElement.textContent = `Total: R$ ${totalPedido.toFixed(2)}`;
+        }
+
+        function finalizarPedido() {
+            if (produtosSelecionados.length > 0) {
+                alert('Pedido finalizado com sucesso!');
+                // Aqui você pode adicionar a lógica para processar o pedido
+                produtosSelecionados = []; // Limpa a seleção após finalizar
+                totalPedido = 0; // Reseta o total
+                atualizarListaPedido(); // Atualiza a lista e o total
+            } else {
+                alert('Adicione produtos ao pedido antes de finalizar.');
+            }
+        }
+    </script>
+</body>
+</html>
