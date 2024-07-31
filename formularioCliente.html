@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-image: url('https://hamburguerdesucesso.com.br/wp-content/uploads/2021/05/lanches-para-vender-combos.jpg'); /* Imagem de fundo da página */
+            background-image: url('https://images-americanas.b2w.io/produtos/1330092905/imagens/papel-de-parede-para-cozinha-copa-lanchonete-adesivo-bege-com-comida-pizza-refrigerante-sorvete-vinilico-lavavel/1330093318_1_large.jpg'); /* Imagem de fundo da página */
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat; 
             color: white; 
         }
         .navbar {
-            background-color: #ff6f00;
+            background-color: #f4a261; 
         }
         .navbar a {
-            color: white;
+            color: #fff; 
         }
         .navbar-brand {
             font-size: 1.8rem; 
         }
         .form-section {
             background-color: rgba(255, 255, 255, 0.85); 
-            padding: 20px;
+            padding: 15px; 
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            max-width: 400px; 
+            max-width: 350px; 
             margin: auto; 
         }
         .form-section h2 {
@@ -38,6 +38,9 @@
         }
         .form-group label {
             color: black; 
+        }
+        .form-group {
+            margin-bottom: 15px; 
         }
         .invalid-feedback {
             display: none;
@@ -60,9 +63,12 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Go Fast</a> 
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
+        <a class="navbar-brand" href="#">Go Fast</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
@@ -132,7 +138,7 @@
                     $(this).addClass('was-validated');
                 } else {
                     event.preventDefault();
-                    
+                    window.location.href = 'cardapio.html'; 
                 }
             });
 
