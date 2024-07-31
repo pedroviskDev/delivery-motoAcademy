@@ -51,6 +51,21 @@
             border-radius: 8px;
             padding: 15px;
         }
+        .modal-header {
+            background-color: #ffe8d6;
+            color: #333;
+        }
+        .modal-body {
+            background-color: #fff;
+        }
+        .modal-content {
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px;
+        }
+        .list-group-item.active {
+            background-color: #e76f51;
+            border-color: #e76f51;
+        }
     </style>
 </head>
 <body>
@@ -73,13 +88,12 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-8">
-                
                 <div class="card">
                     <div class="card-header">
                         <h4>Cardápio</h4>
                     </div>
                     <div class="card-body">
-                       
+                        <!-- Produto 1 -->
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -95,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <!-- Produto 2 -->
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -111,7 +125,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <!-- Produto 3 -->
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -127,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <!-- Produto 4 -->
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -165,43 +179,54 @@
             </div>
 
             <div class="col-md-4">
-                
                 <div class="order-summary">
                     <h4>Resumo do Pedido</h4>
-                    <ul id="pedido" class="list-group mb-3"></ul>
-                    <p id="total" class="font-weight-bold">Total: R$ 0,00</p>
-                    <button class="btn btn-finalizar">Finalizar Pedido</button>
+                    <ul class="list-group mb-3" id="orderList">
+                        <!-- Itens do pedido serão adicionados aqui -->
+                    </ul>
+                    <h5>Total: R$ <span id="orderTotal">0.00</span></h5>
+                    <button class="btn btn-finalizar btn-block" onclick="finalizarPedido()">Finalizar Pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Pedido -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Pedido Confirmado</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Seu pedido foi realizado e está em preparo.</p>
+                    <div class="text-center">
+                        <img src="/img/check.png" alt="" style="width: 100px; height: auto;">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        let produtosSelecionados = [];
-        let totalPedido = 0;
+        var total = 0.00;
 
         function adicionarProduto(produto, preco) {
-            produtosSelecionados.push({ nome: produto, preco: preco });
-            totalPedido += preco;
-            atualizarListaPedido();
+            var listItem = document.createElement('li');
+            listItem.className = 'list-group-item d-flex justify-content-between lh-condensed';
+            listItem.innerHTML = `<div><h6 class="my-0">${produto}</h6></div><span class="text-muted">R$ ${preco.toFixed(2)}</span>`;
+            document.getElementById('orderList').appendChild(listItem);
+            total += preco;
+            document.getElementById('orderTotal').textContent = total.toFixed(2);
         }
 
-        function atualizarListaPedido() {
-            const pedidoList = document.getElementById('pedido');
-            const totalElement = document.getElementById('total');
-            pedidoList.innerHTML = ''; 
-            produtosSelecionados.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.className = 'list-group-item';
-                listItem.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
-                pedidoList.appendChild(listItem);
-            });
-            totalElement.textContent = `Total: R$ ${totalPedido.toFixed(2)}`;
+        function finalizarPedido() {
+            $('#orderModal').modal('show');
         }
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
